@@ -12,6 +12,7 @@ include $(BUILD_STATIC_JAVA_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_PACKAGE_NAME := Settings
+LOCAL_PRIVATE_PLATFORM_APIS := true
 LOCAL_CERTIFICATE := platform
 LOCAL_PRIVILEGED_MODULE := true
 LOCAL_MODULE_TAGS := optional
@@ -20,12 +21,17 @@ LOCAL_USE_AAPT2 := true
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
-    android-support-v4 \
-    android-support-v13 \
-    android-support-v7-recyclerview \
-    android-support-v7-preference \
-    android-support-v7-appcompat \
-    android-support-v14-preference
+    androidx.slice_slice-builders \
+    androidx.slice_slice-core \
+    androidx.slice_slice-view \
+    androidx.core_core \
+    androidx.legacy_legacy-support-v4 \
+    androidx.legacy_legacy-support-v13 \
+    androidx.appcompat_appcompat \
+    androidx.cardview_cardview \
+    androidx.preference_preference \
+    androidx.recyclerview_recyclerview \
+    androidx.legacy_legacy-preference-v14 \
 
 LOCAL_JAVA_LIBRARIES := \
     bouncycastle \
@@ -33,8 +39,11 @@ LOCAL_JAVA_LIBRARIES := \
     ims-common
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
+    androidx.lifecycle_lifecycle-runtime \
+    androidx.lifecycle_lifecycle-extensions \
+    guava \
     jsr305 \
-    settings-logtags
+    settings-logtags \
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
